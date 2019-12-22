@@ -1,12 +1,11 @@
-@extends('accounts.client')
+@extends('layouts.app')
 
-@section('account_content')
-<div class="container">
-    <h4>{{$client->name}}</h4>
-    <div class="text-center display-4 m-5">Create Client</div>
+@section('account')
+<div class="container">    
+    <div class="text-center h2 m-5">Create Task for {{$client->name}}</div>
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-6">
+        <div class="col-6 border border-primary rounded p-5">
             <form action="/tasks" method="POST">
                 @csrf
                 <div class="form-group">
@@ -26,20 +25,17 @@
                 </div>
             </form>
         </div>
-       
-
-
     </div>
     <div class="row">
         <div class="col-3">
             
         </div>
         <div class="col-6">
-            <div class="p-2 text-center bg-info text-white">
-                @if($message ?? '')
-                    {{$message ?? ''}}
-                @endif            
+            @if($message ?? '')
+            <div class="p-2 text-center bg-info text-white">                
+                    {{$message ?? ''}}                   
             </div>                
+            @endif         
         </div>
     </div>
     <div class="row">

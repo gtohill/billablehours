@@ -1,8 +1,8 @@
-@extends('accounts.client')
+@extends('layouts.app')
 
 @section('title', $client->name)
 
-@section('account_content')
+@section('account')
 
 <div class="container">
     <h4>Completed Tasks</h4>

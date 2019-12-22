@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;  
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Client;
 use App\User;
@@ -23,6 +25,7 @@ class ClientController extends Controller
             // get user details
             $user = User::findorfail($user_id);
             $clients = $user->clients;
+          
 
             // show results           
             return view('accounts.clients')->with(['clients' => $clients ]);
@@ -115,8 +118,25 @@ class ClientController extends Controller
                }
            }
 
+            // get the number of active tasks
+            $tasks = DB::select('select * from tasks where completed = 1');  
+            $active_tasks = count($tasks);
+            $completed_tasks = DB::select('select * from tasks where completed = 2');
+            if(count($completed_tasks) > 0){
+                $perc_completed = (count($completed_tasks)/(count($completed_tasks) + $active_tasks))*100;
+            }else{
+                $perc_completed = 0;
+            }           
+
+            // get invoice amounts
+            $invoice = DB::table('invoices')->where('client_id', '=', $client->id)->get();            
            
-            return view('accounts.client')->with(['client' => $client]);
+            return view('accounts.client')
+            ->with(['client' => $client])
+            ->with(['num_tasks'=> $active_tasks])
+            ->with(['perc_completed'=>$perc_completed])
+            ->with(['completed'=>count($completed_tasks)])
+            ->with(['invoice'=>$invoice[0]]);
 
         }
         else{

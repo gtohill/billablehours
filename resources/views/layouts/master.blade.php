@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    add_dashboard branch
     @include('inc.navbar')
     <div class="container">
         @include('inc.messages')

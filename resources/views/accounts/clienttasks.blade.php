@@ -1,8 +1,8 @@
-@extends('accounts.client')
+@extends('layouts.app')
 
 @section('title', $client->name)
 
-@section('account_content')
+@section('account')
 <style>
     .div1 {
         width: 100%;
@@ -10,6 +10,8 @@
         height: auto;
         padding: 10px;
         border: 1px solid #aaaaaa;
+        border-radius: 15px;
+        box-shadow: 10px 10px;
     }
 
     #btn1 {
@@ -47,7 +49,7 @@
 <div class="container div1 my-5 pt-3">    
     <h4>Open Tasks</h4>
     @if($openTask)
-    <table class="table">
+    <table class="table table-hover">
         <tr>
             <th scope="col">Complete</th>
             <th scope="col">Move To: Todo</th>
@@ -101,7 +103,7 @@
         <a href="/tasks/createtask/{{$client->id}}">Create Task</a>
     </div>
     @if(count($tasksInProgress) > 0)
-    <table class="table">
+    <table class="table table-hover">
         <tr>
             <th scope="col">Completed</th>
             <th scope="col">Move To Open</th>

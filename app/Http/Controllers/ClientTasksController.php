@@ -74,6 +74,7 @@ class ClientTasksController extends Controller
      */
     public function show($id)
     {
+        // get client information
         $var = new ClientTasks;
         $results = $var->get_tasks($id);
         return view('accounts.clienttasks')->with(['client' => $results[0]])->with(['openTask' => $results[1]])->with(['tasksInProgress' => $results[2]])->with(['completedTasks' => $results[3]]);
