@@ -6,7 +6,7 @@ use App\Invoice;
 use App\Client;
 
 require_once 'FormatTime.php';
-require_once '../../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 
 class CreateInvoice{
