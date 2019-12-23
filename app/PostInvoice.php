@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostInvoice extends Model
 {
-    protected $fillable = [
-        'invoice_number',
+    public $table = 'postinvoices';
+
+    protected $fillable =[
         'client_id',
-        'amount'       
+        'invoice_number',
+        'amount'
     ];
 
     public function client(){
