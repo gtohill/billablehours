@@ -17,11 +17,12 @@ class CreateInvoicesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('client_id'); //foreign key
             $table->bigInteger('invoice_number');
-            $table->text('description');
             $table->string('name');
+            $table->text('description');            
             $table->float('rate');
             $table->float('time');
             $table->float('total');
+            $table->integer('status')->default(0); // 0 for open 1 for closed
             $table->timestamps();
         });
     }

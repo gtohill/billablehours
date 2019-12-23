@@ -8,6 +8,7 @@ use App\Client;
 use App\Task;
 use App\Invoice;
 use App\CustomClass\CreateInvoice;
+use App\PostInvoice;
 
 
 class InvoiceController extends Controller
@@ -48,9 +49,19 @@ class InvoiceController extends Controller
                 'rate' => $client->rate,
                 'total' => $total,
             ]);
-
+            
             // add task to client
             $client->invoices()->save($invoice);
+
+            // add each task to post_invoice table
+            $post_invoice = new PostInvoice([
+                'invoice_number'=> (int)$invoice_number->invoice_number + 1,
+                'client_id' => $client->id,
+                'amount'=> $total
+            ]);
+
+            // add post invoice to client
+            $client->postinvoices()->save($post_invoice);
         }
         
         //generate invoice

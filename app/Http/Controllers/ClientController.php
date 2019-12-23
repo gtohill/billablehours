@@ -128,15 +128,16 @@ class ClientController extends Controller
                 $perc_completed = 0;
             }           
 
-            // get invoice amounts
+            // get invoice amounts            
             $invoice = DB::table('invoices')->where('client_id', '=', $client->id)->get();            
+            
            
             return view('accounts.client')
             ->with(['client' => $client])
             ->with(['num_tasks'=> $active_tasks])
             ->with(['perc_completed'=>$perc_completed])
             ->with(['completed'=>count($completed_tasks)])
-            ->with(['invoice'=>$invoice[0]]);
+            ->with(['invoice'=>(count($invoice) > 0? $invoice[0]->total: 0)]);
 
         }
         else{

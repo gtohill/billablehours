@@ -1,6 +1,6 @@
-@extends('accounts.client')
+@extends('layouts.app')
 
-@section('account_content')
+@section('account')
 
 
 @if($task)

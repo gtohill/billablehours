@@ -33,4 +33,8 @@ class Client extends Model
     public function invoices(){
         return $this->hasMany(Invoice::class);
     }
+
+    public function postinvoices(){
+        return $this->hasMany(PostInvoice::class);
+    }
 }
