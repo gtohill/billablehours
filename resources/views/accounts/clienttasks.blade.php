@@ -226,12 +226,11 @@
     function secondsToTime(ct) {
 
         let timeFlag = false;        
-
-        var seconds = ct % 60;
+        // format time
+        var seconds = (ct % 60) < 10 ? "0"+(ct%60) : (ct%60);
         var minutes = Math.floor(ct / 60) % 60;
-        var hours = Math.floor(ct / (60 * 60)) % 24;             
-        //var formtime = {hour:hours, mintues:minutes, seconds:seconds};
-        var fTime = hours + " h " + minutes + " m " + seconds + " s";
+        var hours = Math.floor(ct / (60 * 60)) % 24;                     
+        var fTime = hours + " : " + minutes + " : " + seconds;
         return fTime;
     }
 
