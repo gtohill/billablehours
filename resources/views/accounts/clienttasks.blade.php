@@ -15,16 +15,12 @@
     }
 
     #btn1 {
-        display: none;
-        background-color: red;
-        border: 2px red solid;
+        display: none;        
         color: white;
     }
 
     #btn2 {
-        display: inline;
-        background-color: green;
-        border: 2px green solid;
+        display: inline;        
         color: white;
     }
 .like-link {
@@ -45,7 +41,7 @@
     {{$message ?? ''}}
 </div>
 @endif
-
+<!-- OPEN TASKS -->
 <div class="container div1 my-5 pt-3">    
     <h4>Open Tasks</h4>
     @if($openTask)
@@ -83,20 +79,21 @@
                     {{$openTask->description}}
                 </td>
                 <td>
-                    <div id="time" ></div>
+                    <div id="time" ></div>                    
                     <input type="hidden" name="actual" id="actual" value="{{$openTask->time}}">
                 </td>
             </form>
             <td>
-                <button id="btn2" onclick="startFunc();">Start</button>
-                <button id="btn1" onclick="stopFunc();">Stop</button>
+                <button id="btn2" class="btn btn-success" onclick="startFunc();">Start</button>
+                <button id="btn1" class="btn btn-danger" onclick="stopFunc();">Stop</button>
             </td>            
         </tr>
     </table>
     @endif
-
 </div>
+<!-- END OF OPEN TASKS -->
 
+<!-- TO DO TASKS -->
 <div class="container div1 mb-5">
     <h4>To Do Tasks</h4>
     <div>
@@ -152,9 +149,10 @@
         @endforeach
     </table>
     @endif
-
 </div>
+<!-- END TO DO TASKS -->
 
+<!-- COMPLETE TASKS -->
 <div class="container div1 mb-5">
     <h4>Completed Tasks</h4>
     @if(count($completedTasks) > 0)
@@ -173,13 +171,13 @@
             <td>
                 <form action="/invoice" method="POST">
                     @csrf
-                    <input type="submit" name="task_id" value="{{$completedTask->id}}">
+                    <input type="submit" name="task_id" value="{{$completedTask->id}}" class="btn btn-info">
                     <input type="hidden" name="client_id" value="{{$client->id}}">
                 </form>
             </td>
             <td>
                 <form action="/completed/{{$completedTask->id}}/edit" method="GET">
-                    <input type="submit" value="{{$completedTask->id}}">
+                    <input type="submit" value="{{$completedTask->id}}" class="btn btn-success">
                     <i class="fas fa-arrow-up"></i>
                 </form>
             </td>
@@ -209,9 +207,9 @@
     </table>
     @endif
 </div>
+<!-- END OF COMPLETED TASKS -->
 
 <script>
-
     let myVar = 0;
     let autSav = 0;   
     let flag = false;
@@ -232,16 +230,14 @@
         var seconds = ct % 60;
         var minutes = Math.floor(ct / 60) % 60;
         var hours = Math.floor(ct / (60 * 60)) % 24;             
-
+        //var formtime = {hour:hours, mintues:minutes, seconds:seconds};
         var fTime = hours + " h " + minutes + " m " + seconds + " s";
         return fTime;
     }
 
     // start the timer
     function startFunc() {
-        flag = false;
-        //document.getElementById('chkBox').disabled = true; 
-        //document.getElementById('chkBox').checked = false;  
+        flag = false;        
         document.getElementById('btn1').style.display = 'inline';
         document.getElementById('btn2').style.display = 'none';
         myVar = setInterval(myTimer, 1000);
@@ -267,10 +263,9 @@
         clearInterval(autSav);
 
         flag = true;
-        //document.getElementById('chkBox').disabled = false;
+        // show or hide start or stop buttons
         document.getElementById('btn2').style.display = 'inline';
-        document.getElementById('btn1').style.display = 'none';
-        //document.getElementById('total').innerHTML = time;
+        document.getElementById('btn1').style.display = 'none';        
 
     }
 

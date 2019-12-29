@@ -3,22 +3,14 @@
 @section('title', 'Clients')
 
 @section('clients')
-
-<ul>
-    @foreach ($clients as $client)
-
-    <li><a href="/accounts/{{$client->id}}">{{$client->name}}</a> </li>
-
+    <div class="container">
+        <div class="h2 py-3">
+            Client List
+        </div>
+        @foreach ($clients as $client)
+        <div class="list-group">
+            <a href="/accounts/{{$client->id}}" class="list-group-item list-group-item-action">{{$client->name}}</a>             
+        </div> 
     @endforeach
-    <br>
-</ul>
-
-<script>
-    function getId() {
-        event.preventDefault();
-        var id = document.forms['taskForm']['id'].value;
-        console.log("Id is:" + id);
-
-    }
-</script>
+    </div>    
 @endsection

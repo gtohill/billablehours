@@ -19,7 +19,12 @@ Route::resource('tasks', 'ClientTasksController' );
 Route::resource( 'opentask', 'OpenTaskController' );
 Route::resource( 'completed', 'CompletedTasksController' );
 Route::resource('autosave', 'AutoSaveController');
+
+// actions to the invoice controller
 Route::post('invoice', 'InvoiceController@invoice');
+Route::post('invoice/update', 'InvoiceController@update');
+Route::get('invoice/{id}', 'InvoiceController@show');
+Route::get('invoice/{id}/edit', 'InvoiceController@edit');
 
 // custom resource
 Route::post('edittask', 'ClientTasksController@edittask');

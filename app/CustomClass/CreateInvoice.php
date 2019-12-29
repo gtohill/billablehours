@@ -14,7 +14,7 @@ class CreateInvoice{
     function __construct($invoice_number)
     {
         $invoices = Invoice::select('*')->where('invoice_number', $invoice_number)->get();
-        $invoice_date = date('F d, Y');        
+        $invoice_date = $invoices[0]->created_at->format('M d Y');        
         $invoice_number = $invoices[0]->invoice_number;        
                 
         // get client

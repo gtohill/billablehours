@@ -122,7 +122,7 @@
             <h6 class="collapse-header">Invoice</h6>
             <a class="collapse-item" href="/completed/{{$client->id}}">Generate Invoice</a>
             <a class="collapse-item" href="#">Close Invoice</a>
-            <a class="collapse-item" href="#">Edit Invoice</a>
+            <a class="collapse-item" href="/invoice/{{$client->id}}">Edit Invoice</a>
           </div>
         </div>
         @endif
