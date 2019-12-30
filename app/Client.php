@@ -14,8 +14,7 @@ class Client extends Model
         'prov',
         'pc',
         'phone',        
-        'user_id',
-        'rate'
+        'user_id'        
     ];
     
     public function users(){

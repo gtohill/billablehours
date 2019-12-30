@@ -14,14 +14,11 @@ use App\CustomClass\EditTask;
 
 class InvoiceController extends Controller
 {       
+    // generates the pdf invoice
     public function invoice(Request $request)
     {
-
         // get client
         $client = Client::findorfail(request('client_id'));
-
-        // get rate
-        $rate = $client->rate;
 
         // get tasks
         $ids_arr = request('services');
@@ -32,15 +29,11 @@ class InvoiceController extends Controller
         //get last invoice number
         $invoice_number = DB::table('invoices')->latest('invoice_number')->first();
 
-        // total amount owed
-        $total = 0.00;        
-
+        // Get id for each task and process invoice details
         foreach ($ids_arr as $id) {            
             
-            $task = Task::findorfail($id);
-            $sub_total = round((($task->time / 3600) * $client->rate), 2);
-            $total += $sub_total;
-            array_push($tasks_to_invoices, $sub_total);
+            $task = Task::findorfail($id);            
+            array_push($tasks_to_invoices, $task->amount);
             
             // add to invoice table
             $invoice = new Invoice([
@@ -48,17 +41,18 @@ class InvoiceController extends Controller
                 'name' => $task->name,
                 'description' => $task->description,                
                 'time' => $task->time,
-                'rate' => $client->rate,
-                'total' => $sub_total,
+                'rate' => $task->rate,
+                'total' => $task->amount,
             ]);
             
             // add task to client
             $client->invoices()->save($invoice);    
         }
 
+        $total = 0.00; 
         // get total amount for this invoice
         foreach($tasks_to_invoices as $in){
-            $total += $in;
+            $total += $in;            
         }
 
         // add each task to post_invoice table
@@ -69,10 +63,9 @@ class InvoiceController extends Controller
         ]);
 
         // add post invoice to client
-        $client->postinvoices()->save($post_invoice);
-                
+        $client->postinvoices()->save($post_invoice);        
         // create invoice
-        $create_invoice = new CreateInvoice($invoice_number->invoice_number);
+        $create_invoice = new CreateInvoice(($invoice_number->invoice_number+1), $total);
         
     }
 

@@ -10,13 +10,17 @@
                 @csrf
                 <div class="form-group">
                     <label for="formGroupExampleInput">Task Name</label>
-                    <input type="text" class="form-control" name="name" id="formGroupExampleInput">
+                    <input type="text" class="form-control" name="name" id="formGroupExampleInput" required>
                     <input type="hidden" name="clientid" value="{{$client->id}}">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Task Description</label>
                     <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
-                        rows="3"></textarea>
+                        rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Hourly Rate</label>
+                    <input type="text" class="form-control" name="rate" id="formGroupExampleInput" required>
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2"></label>

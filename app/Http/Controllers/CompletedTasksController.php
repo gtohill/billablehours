@@ -68,12 +68,12 @@ class CompletedTasksController extends Controller
         $completed_tasks = [];
 
         foreach($completed as $aTask){
+            $aTask->setAmountAttribute();
             $time = new FormatTime($aTask->time);            
-            $aTask->time = $time->get_formatted_time();            
+            $aTask->time = $time->get_formatted_time();             
             array_push($completed_tasks, $aTask);
         }
-       
-        
+               
         // display results
         return view('accounts.finishedtasks')->with(['completed_tasks' => $completed_tasks])->with(['client'=>$client]);
 

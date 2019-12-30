@@ -226,11 +226,16 @@
     function secondsToTime(ct) {
 
         let timeFlag = false;        
-        // format time
-        var seconds = (ct % 60) < 10 ? "0"+(ct%60) : (ct%60);
+        // calculate time
+        var seconds = ct % 60;
         var minutes = Math.floor(ct / 60) % 60;
-        var hours = Math.floor(ct / (60 * 60)) % 24;                     
-        var fTime = hours + " : " + minutes + " : " + seconds;
+        var hours = Math.floor(ct / (60 * 60)) % 24;
+        // format time
+        var fSeconds = (seconds < 10) ? "0"+seconds : seconds;
+        var fMinutes = (minutes < 10) ? "0"+minutes : minutes;
+        var fHours = (hours < 10) ? "0"+hours:  hours;
+        
+        var fTime = fHours + " : " + fMinutes + " : " + fSeconds;        
         return fTime;
     }
 
@@ -239,7 +244,7 @@
         flag = false;        
         document.getElementById('btn1').style.display = 'inline';
         document.getElementById('btn2').style.display = 'none';
-        myVar = setInterval(myTimer, 1000);
+        myVar = setInterval(myTimer, 100);
         autSav = setInterval(autoSave, 60000);
     }
 

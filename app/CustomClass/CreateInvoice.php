@@ -11,7 +11,7 @@ require_once '../vendor/autoload.php';
 
 class CreateInvoice{
 
-    function __construct($invoice_number)
+    function __construct($invoice_number, $total)
     {
         $invoices = Invoice::select('*')->where('invoice_number', $invoice_number)->get();
         $invoice_date = $invoices[0]->created_at->format('M d Y');        
@@ -30,9 +30,9 @@ class CreateInvoice{
 		
             <div id="address">
                 $client->name<br>
-                1234 Main St <br>
-                Anywhere, USA <br>
-                10100
+                $client->address <br>
+                $client->city, $client->prov <br>
+                $client->pc
             </div>
 
             <div id="logo">
@@ -57,7 +57,7 @@ class CreateInvoice{
 		<div id="customer">
 
             <div id="customer-title">$client->name.
-                c/o Steve Widget
+                c/o $client->contact
             </div>
 
             <table id="meta">
@@ -75,7 +75,7 @@ class CreateInvoice{
                 </tr>
                 <tr>
                     <td class="meta-head">Amount Due</td>
-                    <td><div class="due">$875.00</div></td>
+                    <td><div class="due">$$total</div></td>
                 </tr>
 
             </table>
@@ -122,13 +122,13 @@ EOT;
  		  <tr>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Subtotal</td>
-		      <td class="total-value"><div id="subtotal">$$invoice_total.00</div></td>
+		      <td class="total-value"><div id="subtotal">$$invoice_total</div></td>
 		  </tr>
 		  <tr>
 
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Total</td>
-		      <td class="total-value"><div id="total">$$invoice_total.00</div></td>
+		      <td class="total-value"><div id="total">$$invoice_total</div></td>
 		  </tr>
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
@@ -139,7 +139,7 @@ EOT;
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line balance">Balance Due</td>
-		      <td class="total-value balance"><div class="due">$$invoice_total.00</div></td>
+		      <td class="total-value balance"><div class="due">$$invoice_total</div></td>
 		  </tr>
 		
 		</table>

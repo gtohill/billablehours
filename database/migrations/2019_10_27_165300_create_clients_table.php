@@ -21,8 +21,7 @@ class CreateClientsTable extends Migration
             $table->string('city');
             $table->string('prov');
             $table->string('pc');
-            $table->string('phone');
-            $table->float('rate');
+            $table->string('phone');            
             $table->timestamps();
         });
     }

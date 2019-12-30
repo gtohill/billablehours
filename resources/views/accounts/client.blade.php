@@ -6,6 +6,9 @@
 <div class="row py-5">
     <div class="col">
         <div class="h4 text-center">Client: {{$client->name}}</div>
+        @if($message ?? '')
+          {{$message}}
+        @endif
     </div>
 </div>
 <div class="row">

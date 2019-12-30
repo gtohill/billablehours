@@ -69,8 +69,7 @@ class ClientController extends Controller
             'city' => 'required',
             'pc' => 'required',
             'prov' => 'required',
-            'phone' => 'required', 
-            'rate' => 'required',
+            'phone' => 'required',             
 
         ]);
         
@@ -81,11 +80,10 @@ class ClientController extends Controller
             'pc'=> request('pc'),
             'prov' => request('prov'),
             'phone'=> request('phone'),            
-            'user_id' => auth()->user()->id,
-            'rate'=> request('rate')            
+            'user_id' => auth()->user()->id,            
         ]);
 
-        return redirect('/accounts');
+        return redirect('/accounts')->with(["message"=>"Success! Client was created."]);
     }
 
     /**

@@ -35,11 +35,7 @@
                     <label for="formGroupExampleInput2">Phone</label>
                     <input type="text" class="form-control" name="phone" id="phone" onchange="formatPhoneNumber()" placeholder="Phone" value="" required>
                     <div id="phone-message"></div>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Rate</label>
-                    <input type="text" class="form-control" name="rate" placeholder="Rate" required>
-                </div>
+                </div>                
                 <div class="form-group">
                     <label for="formGroupExampleInput2"></label>
                     <input type="submit" class="form-control btn-success" value="Create Client">
@@ -47,6 +43,9 @@
             </form>
         </div>
     </div>
+    @if($message ?? "")
+        {{$message}}
+    @endif
 </div>
 
 <script>
