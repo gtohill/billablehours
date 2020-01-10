@@ -121,21 +121,27 @@ class ClientController extends Controller
             $active_tasks = count($tasks);
             $completed_tasks = DB::select('select * from tasks where completed = 2');
             if(count($completed_tasks) > 0){
-                $perc_completed = (count($completed_tasks)/(count($completed_tasks) + $active_tasks))*100;
+                $percent_completed = (count($completed_tasks)/(count($completed_tasks) + $active_tasks))*100;
             }else{
-                $perc_completed = 0;
+                $percent_completed = 0;
             }           
 
             // get invoice amounts            
             $invoice = DB::table('invoices')->where('client_id', '=', $client->id)->get();            
             
+            // get total invoice completed
+            $total_invoice  = 0;
+            foreach($invoice as $in){
+                $total_invoice = $total_invoice + $in->total;
+            }
+            var_dump($total_invoice);
            
             return view('accounts.client')
             ->with(['client' => $client])
             ->with(['num_tasks'=> $active_tasks])
-            ->with(['perc_completed'=>$perc_completed])
+            ->with(['perc_completed'=>$percent_completed])
             ->with(['completed'=>count($completed_tasks)])
-            ->with(['invoice'=>(count($invoice) > 0? $invoice[0]->total: 0)]);
+            ->with(['invoice'=>$total_invoice]);
 
         }
         else{

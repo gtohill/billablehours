@@ -27,7 +27,8 @@
                 <th scope="col">Select Invoice</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
-                <th scope="col">Time</th>      
+                <th scope="col">Time</th> 
+                <th scope="col">Rate</th>      
                 <th scope="col">Amount</th> 
                 <th scope="col">Edit </th>           
             </tr>
@@ -58,22 +59,22 @@
                 </td> 
                 <td>
                     <label class="form-check-label" for="defaultCheck1">
-                    {{$task->amount}}
+                        ${{$task->rate}}
+                    </label>
+                </td>
+                <td>
+                    <label class="form-check-label" for="defaultCheck1">
+                    ${{$task->amount}}
                     </label>
                 </td> 
                 <td>
                     <a class="like-link" href="/tasks/{{$task->id}}/edit">edit</a>
                 </td>               
             </tr>
-
             @endforeach
-
-
-
         </table>
         <input type="submit" value="Create Invoice">
     </form>
-
 </div>
 <script>
     function verifySubmit(){        
