@@ -40,6 +40,7 @@
             <td>
                 <input type="submit" value="Update">
             </td>
+        </form>
     </tr>
 
     </form>

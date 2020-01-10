@@ -255,9 +255,8 @@
 
             let taskId = document.getElementById('id').value;
             let taskTime = document.getElementById('actual').value;
-            console.log(taskTime);
             const data = await postData('http://localhost:8000/autosave', { id: taskId, time: taskTime });
-            console.log("JSON| " + JSON.stringify(data)); // JSON-string from `response.json()` call
+            //console.log("JSON| " + JSON.stringify(data)); // JSON-string from `response.json()` call
 
         } catch (error) {
             console.error("error message "+error);

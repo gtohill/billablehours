@@ -210,6 +210,7 @@ class ClientTasksController extends Controller
             
             // save edited task to database
             $task->time = $total_seconds;
+            $task->setAmountAttribute();
             $task->save();
             
             $etask = new EditTask($task);

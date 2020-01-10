@@ -15,6 +15,9 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/3043c0bd14.js" crossorigin="anonymous"></script>
+  <link href="{{ asset('css/sticky-footer.css') }}" rel="stylesheet">
+  
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">

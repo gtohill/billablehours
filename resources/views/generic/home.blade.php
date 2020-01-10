@@ -1,39 +1,38 @@
 @extends('layouts.master')
 
 @section('content')
-<main role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">Time to TrackIT!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="{{ route('register') }}" role="button">Get Started &raquo;</a></p>
-      </div>
+    <div class="container pt-5">
+      <div class="hero-image">
+        <img class="h-img" src="{{url('/images/time-is-money.jpg')}}" alt="Company Logo">
+        <div class="hero-text">
+          <h1 class="display-4"><b>Time Is Money... TrackIT!</b></h1>
+          <p class="h3">Time is money... make sure you're compensated for your time.  With TrackIT, you can create tasks and track how long it takes you to complete them.</p>
+          <p ><a style="color:white; background-color:  #FB8604" class="btn btn-lg" href="{{ route('register') }}" role="button">Start Tracking &raquo;</a></p>
+        </div>
+      </div> 
     </div>
+    <br><br><br>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
           <h2>Don't Guess... Track It</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <p>You spend your time helping your clients build their business. Now you can have confidence you've invoiced them for the time you've invested in their business. </p>
+          <p><a class="btn btn-secondary" href="{{ route('register') }}" role="button">Start Tracking &raquo;</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Accurate Billing</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <h2>Improve Your Profitability</h2>
+          <p>By using TrackIt, to track the time it takes for you to complete tasks, you can provide accurate estimates and assess ways to improve your workflow.</p>
+          <p><a class="btn btn-secondary" href="{{ route('register') }}" role="button">Improve Profits &raquo;</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Improve Your Metrics</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <h2>Budget Vs Actual</h2>
+          <p>If you're working within a budget, TrackIt allows you to track the actual time you've invested in the project and compare that amount to the budget the client is willing to pay.</p>
+          <p><a class="btn btn-secondary" href="{{ route('register') }}" role="button">Improve Efficiency &raquo;</a></p>
         </div>
       </div>
-
-      <hr>
-
     </div> <!-- /container -->
 
-  </main>
   @endsection

@@ -4,19 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/3043c0bd14.js" crossorigin="anonymous"></script>
+    <link href="{{ asset('css/sticky-footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/hero.css') }}" rel="stylesheet">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer/">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>@yield('title', 'TrackIt')</title>
 </head>
 
-<body>
+<body style="background-color:  #EBF7E3;">
     @include('inc.navbar')
-    <div class="container">
+   
         @include('inc.messages')
         @yield('content')
-    </div>  
-
+   
+    <footer class="footer" style="background-color: #1B3409" >
+        <div class="container" style="background-color: #1B3409">
+            <div class="row text-dark py-3">
+                <div class="col-md-6 text-center">
+                    <img class="rounded mx-auto d-block" src="{{url('/images/trackit-logo.png')}}" alt="Company Logo">
+                    <p style="color:#FB9902">Time is money... track it!</p>
+                </div>
+                
+                <div class="col-md-6 text-center">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <i class="fab fa-twitter" style="font-size:48px; color:#FB9902" ></i>
+                        </div>
+                        <div class="col-sm-2">
+                            <i class="fab fa-facebook" style="font-size:48px; color:#FB9902"></i>
+                        </div>
+                        <div class="col-sm-2">
+                            <i class="fab fa-youtube" style="font-size:48px;color:#FB9902"></i>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>        
+    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

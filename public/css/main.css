@@ -1,0 +1,19 @@
+/*
+Color Scheme
+*/
+
+.main-backgroundcolor{
+    background-color:  #EBF7E3;    
+}
+
+.main-navbar .footer{
+    background-color: #1B3409
+}
+.buttons{
+    color:white; 
+    background-color:  #FB8604;
+}
+
+.card{
+    background-color: #F7E9D4;
+}

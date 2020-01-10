@@ -75,7 +75,9 @@ class CompletedTasksController extends Controller
         }
                
         // display results
-        return view('accounts.finishedtasks')->with(['completed_tasks' => $completed_tasks])->with(['client'=>$client]);
+        return view('accounts.finishedtasks')
+        ->with(['completed_tasks' => $completed_tasks])
+        ->with(['client'=>$client]);
 
     }
 
@@ -92,6 +94,8 @@ class CompletedTasksController extends Controller
 
         // change to in progress
         $completed_task->completed = 1;
+        // set the amount to client will pay for the completed task
+        $completed_task->setAmountAttribute();
         $completed_task->save();
 
         // get client id
