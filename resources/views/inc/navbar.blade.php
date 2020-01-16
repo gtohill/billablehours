@@ -11,13 +11,13 @@
             <!-- Left Side Of Navbar -->           
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" style="color:white" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" style="color:#FB8604" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color:white" href="/about">About</a>
+                    <a class="nav-link" style="color:#FB8604" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color:white" href="/FAQ">FAQ</a>
+                    <a class="nav-link" style="color:#FB8604" href="/FAQ">FAQ</a>
                 </li>                
             </ul>
 
@@ -26,21 +26,21 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" style="color:white" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" style="color:#FB8604" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" style="color:#FB8604" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" style="color:white" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" style="color:#FB8604" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" style="color:white" href="{{ route('logout') }}"
+                            <a class="dropdown-item" style="color:#FB8604" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}

@@ -11,7 +11,7 @@
         @endif
     </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid">  
   <div class="row">  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">  
     <h4>Quick Menu:</h4> 
@@ -36,9 +36,7 @@
         </ul>
     </div>
   </nav>
-  </div>
-
-  
+  </div> 
 
 
 <div class="row">

@@ -1,12 +1,19 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 
-  .footer {
+  .footer-master {
     position: absolute;
     margin-top: 10%;
     bottom: 0;
-    width:100%; 
-    
-    
+    width:100%;    
+  }
+
+  .dashboard-footer{
+    position: absolute;
+    margin-top: 10%;
+    bottom: 0;
+    width:100%;
+    background-color: #1B3409; 
+    float:inline-block"
   }
   

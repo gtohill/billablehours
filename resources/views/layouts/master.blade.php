@@ -17,35 +17,34 @@
 </head>
 
 <body style="background-color:  #EBF7E3;">
-    @include('inc.navbar')
+    
+    @include('inc.navbar')   
+    @include('inc.messages')
+    @yield('content')
    
-        @include('inc.messages')
-        @yield('content')
-   
-    <footer class="footer" style="background-color: #1B3409" >
-        <div class="container" style="background-color: #1B3409">
-            <div class="row text-dark py-3">
-                <div class="col-md-6 text-center">
-                    <img class="rounded mx-auto d-block" src="{{url('/images/trackit-logo.png')}}" alt="Company Logo">
-                    <p style="color:#FB9902">Time is money... track it!</p>
-                </div>
-                
-                <div class="col-md-6 text-center">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <i class="fab fa-twitter" style="font-size:48px; color:#FB9902" ></i>
-                        </div>
-                        <div class="col-sm-2">
-                            <i class="fab fa-facebook" style="font-size:48px; color:#FB9902"></i>
-                        </div>
-                        <div class="col-sm-2">
-                            <i class="fab fa-youtube" style="font-size:48px;color:#FB9902"></i>
-                        </div>
-                    </div>                
-                </div>
+    
+    <div class="container-fluid mt-5" style="background-color: #1B3409">
+        <div class="row text-dark py-3">
+            <div class="col-md-6 text-center">
+                <img class="rounded mx-auto d-block" src="{{url('/images/trackit-logo.png')}}" alt="Company Logo">
+                <p style="color:#FB9902">Time is money... track it!</p>
             </div>
-        </div>        
-    </footer>
+            
+            <div class="col-md-6 text-center py-3">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <i class="fab fa-twitter" style="font-size:36px; color:#FB9902" ></i>
+                    </div>
+                    <div class="col-sm-2">
+                        <i class="fab fa-facebook" style="font-size:36px; color:#FB9902"></i>
+                    </div>
+                    <div class="col-sm-2">
+                        <i class="fab fa-youtube" style="font-size:36px;color:#FB9902"></i>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>        
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

@@ -36,7 +36,7 @@
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'TrackIT') }}</title>
 </head>
 
 <body>
@@ -44,10 +44,10 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color:#1B3409" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -188,7 +188,8 @@
         </div>       
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid">   
+            
           @yield('content')
           @yield('clients')
           @yield('account')
@@ -197,21 +198,22 @@
 
       </div>
       <!-- End of Main Content -->
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; TrackIt 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+
     </div>
       
   </div>
   <!-- End of Page Wrapper -->
 
-
+      <!-- Footer -->
+      <footer class="dashboard-footer">
+        <div class="container my-auto" >
+          <div class="copyright text-center my-auto">
+          <img src="{{asset('images/trackit-logo.png')}}" alt="" style="width:auto">
+            <span>Copyright &copy; TrackIt 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('jquery/jquery.min.js')}}"></script>

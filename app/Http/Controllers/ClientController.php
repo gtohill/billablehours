@@ -134,7 +134,6 @@ class ClientController extends Controller
             foreach($invoice as $in){
                 $total_invoice = $total_invoice + $in->total;
             }
-            var_dump($total_invoice);
            
             return view('accounts.client')
             ->with(['client' => $client])
