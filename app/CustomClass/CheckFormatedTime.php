@@ -2,9 +2,8 @@
 
 namespace App\CustomClass;
 
-class CheckFormatTime
-{
-    private $time_in_seconds;
+class CheckFormatedTime
+{    
 
     public function __construct($time)
     {
@@ -16,16 +15,18 @@ class CheckFormatTime
             $minutes = ((int)$formatted_time[1]) * 60;
             $seconds = (int)$formatted_time[2];
             $time_in_seconds = $hours + $minutes + $seconds;
-            $this->time_in_seconds = $time_in_seconds;
-            return $this->time_in_seconds;
+            $this->time_secs= $time_in_seconds;
+            
+        }
+        else{
+            $this->time_secs = $time;
         }
 
-        return $time;
-
     }
-    
+
+    public function get_time(){
+        return $this->time_secs;
+    }
 
 }
-
-
 ?>

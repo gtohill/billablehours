@@ -9,7 +9,7 @@ use App\OpenTask;
 use App\CustomClass\ClientTasks;
 use App\CustomClass\EditTask;
 use App\CustomClass\FormatTime;
-use App\CustomClass\CheckFormatTime;
+use App\CustomClass\CheckFormatedTime;
 use Exception;
 
 class CompletedTasksController extends Controller
@@ -121,11 +121,9 @@ class CompletedTasksController extends Controller
         $client = Client::find($id);
 
         // get actual time of task from request        
-        $time_in_seconds = request('actual2');
-        var_dump($time_in_seconds);
-        $seconds = new CheckFormatTime($time_in_seconds);
-        var_dump($seconds);
-        //echo $seconds;
+        $time_in_seconds = request('actual2');        
+        $formatted_seconds = new CheckFormatedTime($time_in_seconds);        
+        
 
         // update task in task table
         // get all tasks
@@ -140,7 +138,7 @@ class CompletedTasksController extends Controller
 
         // complete task by changing status to 2(completed) and update time
         foreach ($task_to_close as $task) {
-            $task->time = $seconds;
+            $task->time = $formatted_seconds->get_time();
             $task->completed = 2;
             $client->tasks()->save($task);
         }

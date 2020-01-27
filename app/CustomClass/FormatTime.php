@@ -18,7 +18,7 @@ class FormatTime
     }
 
     public function get_formatted_time(){        
-        $formatted = $this->hours .' h '.$this->minutes.' m '.$this->seconds.' s' ;
+        $formatted = $this->hours .' : '.$this->minutes.' : '.$this->seconds;
         return (string)$formatted;
     }
 }
