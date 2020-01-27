@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="formGroupExampleInput2"></label>
                     <input type="submit" class="form-control btn-success" id="formGroupExampleInput2"
-                        value="Create Client">
+                        value="Create Task">
                 </div>
             </form>
         </div>

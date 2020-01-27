@@ -14,8 +14,7 @@ class FormatTime
         $actual_time = (int)$time;                
         $this->seconds = $actual_time % 60;
         $this->minutes = floor($actual_time / 60) % 60;
-        $this->hours = floor(($actual_time / (60 * 60)) % 24);
-        
+        $this->hours = floor(($actual_time / (60 * 60)) % 24);                
     }
 
     public function get_formatted_time(){        

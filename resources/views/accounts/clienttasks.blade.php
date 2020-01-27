@@ -158,7 +158,7 @@
     @if(count($completedTasks) > 0)
     <table class="table">
         <tr>
-            <th scope="col">Send To Invoice</th>
+            
             <th scope="col">Change Status</th>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
@@ -168,13 +168,7 @@
 
         @foreach ($completedTasks as $completedTask)
         <tr>
-            <td>
-                <form action="/invoice" method="POST">
-                    @csrf
-                    <input type="submit" name="task_id" value="{{$completedTask->id}}" class="btn btn-info">
-                    <input type="hidden" name="client_id" value="{{$client->id}}">
-                </form>
-            </td>
+            
             <td>
                 <form action="/completed/{{$completedTask->id}}/edit" method="GET">
                     <input type="submit" value="{{$completedTask->id}}" class="btn btn-success">
