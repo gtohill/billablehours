@@ -157,8 +157,7 @@
     <h4>Completed Tasks</h4>
     @if(count($completedTasks) > 0)
     <table class="table">
-        <tr>
-            
+        <tr>            
             <th scope="col">Change Status</th>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
@@ -167,8 +166,7 @@
         </tr>
 
         @foreach ($completedTasks as $completedTask)
-        <tr>
-            
+        <tr>            
             <td>
                 <form action="/completed/{{$completedTask->id}}/edit" method="GET">
                     <input type="submit" value="{{$completedTask->id}}" class="btn btn-success">

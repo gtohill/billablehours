@@ -115,7 +115,6 @@ class ClientTasksController extends Controller
      */
     public function update(Request $request, $id)
     {    
-
         // get the client
         $client = Client::find($id);
 

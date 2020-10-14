@@ -53,6 +53,7 @@
 
 function formatPhoneNumber() {
     let x =  document.getElementById('phone').value;
+    console.log(x)
     var cleaned = ('' + x).replace(/\D/g, '')
     var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
     if (match) {

@@ -107,10 +107,9 @@ class ClientController extends Controller
             $user = User::findorfail($user_id);
 
              // get all clients
-            $all_clients = $user->clients;            
-           $client;
+            $all_clients = $user->clients;                       
             // get the client we want.
-           foreach($all_clients as $clnt){
+            foreach($all_clients as $clnt){
                if($clnt->id == $id){
                    $client = $clnt;
                }

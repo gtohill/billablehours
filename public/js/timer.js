@@ -84,7 +84,6 @@ function handleChange() {
 }
 
 // auto save open task in data base every 1 minute
-
 async function autoSave() {        
     
     try {
