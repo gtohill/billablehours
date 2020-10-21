@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('title', $client->name)
-
-@section('account')
+@extends('layouts.app') @section('title', $client->name) @section('account')
 <style>
     .div1 {
         width: 100%;
@@ -15,25 +11,37 @@
     }
 
     #btn1 {
-        display: none;        
+        display: none;
         color: white;
     }
 
     #btn2 {
-        display: inline;        
+        display: inline;
         color: white;
     }
-.like-link {
-  background: none!important;
-  border: none;
-  padding: 0!important;
-  /*optional*/
-  font-family: arial, sans-serif;
-  /*input has OS specific font-family*/
-  color: #069;
-  text-decoration: underline;
-  cursor: pointer;
-}
+    .like-link {
+        background: none !important;
+        border: none;
+        padding: 0 !important;
+        /*optional*/
+        font-family: arial, sans-serif;
+        /*input has OS specific font-family*/
+        color: #069;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .format-name {
+        width:200px;
+    }
+    .format-description {        
+        width: 350px;
+        height: 75px;
+        overflow: scroll;                                    
+    }
+    .format-time {
+        min-width: 100px;
+    }
 </style>
 
 @if($message ?? '')
@@ -41,8 +49,11 @@
     {{$message ?? ''}}
 </div>
 @endif
+<!-- TASKS CONTAINER -->
+<div style="padding-bottom: 50px">
 <!-- OPEN TASKS -->
-<div class="container div1 my-5 pt-3">    
+
+<div class="container div1 my-5 pt-3">
     <h4>Open Tasks</h4>
     @if($openTask)
     <table class="table table-hover">
@@ -54,41 +65,64 @@
             <th scope="col">Time</th>
         </tr>
         <tr>
-            <td>
+            <td class="format-task-btn">
                 <form action="/completed/{{$client->id}}" method="POST">
-                    @method('PUT')
-                    @csrf
-                    <input class="btn btn-primary" type="submit" name="id" value="{{$openTask->id}}">
-                    <input type="hidden" name="actual2" id="actual2">
-                    <i class="fas fa-arrow-down"></i><i class="fas fa-arrow-down"></i>
+                    @method('PUT') @csrf
+                    <input
+                        class="btn btn-primary"
+                        type="submit"
+                        name="id"
+                        value="{{$openTask->id}}"
+                    />
+                    <input type="hidden" name="actual2" id="actual2" />
+                    <i class="fas fa-arrow-down"></i
+                    ><i class="fas fa-arrow-down"></i>
                 </form>
-
             </td>
             <form method="POST" action="/tasks/{{$client->id}}">
-                @method('PUT')
-                @csrf
-                <td>
-                    <input class="btn btn-success" type="submit" name="id" id="id" value="{{$openTask->id}}">
+                <td class="format-task-btn">
+                @method('PUT') @csrf
+                    <input
+                        class="btn btn-success"
+                        type="submit"
+                        name="id"
+                        id="id"
+                        value="{{$openTask->id}}"
+                    />
                     <i class="fas fa-arrow-down"></i>
                 </td>
 
-                <td>
+                <td class="format-name">
                     {{$openTask->name}}
                 </td>
-                <td>
-                    {{$openTask->description}}
+                <td class="format-description">
+                    {!! $openTask->description !!}
                 </td>
-                <td>
-                    <div id="time" ></div>                    
-                    <input type="hidden" name="actual" id="actual" value="{{$openTask->time}}">
+                <td class="format-time">                    
+                    <div id="time"></div>
+                        <input
+                            type="hidden"
+                            name="actual"
+                            id="actual"
+                            value="{{$openTask->time}}"
+                        />                    
                 </td>
             </form>
-            <td>
-                <button id="btn2" class="btn btn-success" onclick="startFunc();">Start</button>
-                <button id="btn1" class="btn btn-danger" onclick="stopFunc();">Stop</button>
-            </td>            
+            <td class="format-task-btn">
+                <button
+                    id="btn2"
+                    class="btn btn-success"
+                    onclick="startFunc()"
+                >
+                    Start
+                </button>
+                <button id="btn1" class="btn btn-danger" onclick="stopFunc();">
+                    Stop
+                </button>
+            </td>
         </tr>
     </table>
+
     @endif
 </div>
 <!-- END OF OPEN TASKS -->
@@ -110,44 +144,65 @@
         </tr>
         @foreach ($tasksInProgress as $taskInProgress)
         <tr>
-            <td>
+            <td class="format-task-btn">
                 <form action="/completed/{{$client->id}}" method="POST">
-                    @method('PUT')
-                    @csrf
-                    <input class="btn btn-primary" type="submit" name="id" value="{{$taskInProgress->id}}">
-                    <input type="hidden" name="actual2" value="{{$taskInProgress->time}}">
+                    @method('PUT') @csrf
+                    <input
+                        class="btn btn-primary"
+                        type="submit"
+                        name="id"
+                        value="{{$taskInProgress->id}}"
+                    />
+                    <input
+                        type="hidden"
+                        name="actual2"
+                        value="{{$taskInProgress->time}}"
+                    />
                     <i class="fas fa-arrow-down"></i>
                 </form>
             </td>
             <form method="POST" action="/opentask/{{$client->id}}">
-                @method('PUT')
-                @csrf
-                <td>
-                    <input class="btn btn-success" type="submit" name="id" value="{{$taskInProgress->id}}">
+                @method('PUT') @csrf
+                <td class="format-task-btn">
+                    <input
+                        class="btn btn-success"
+                        type="submit"
+                        name="id"
+                        value="{{$taskInProgress->id}}"
+                    />
                     <i class="fas fa-arrow-up"></i>
                 </td>
-                <td>
+                <td class="format-name">
                     {{$taskInProgress->name}}
                 </td>
                 <td>
-                    {{$taskInProgress->description}}
+                    <div class="format-description">
+                        {!! $taskInProgress->description !!}
+                    </div>
                 </td>
-                <td>
+                <td class="format-time">
                     {{$taskInProgress->time}}
                 </td>
             </form>
-            <td>
-                <a class="like-link" href="/tasks/{{$taskInProgress->id}}/edit">edit</a> |
-                <form action="/tasks/{{$taskInProgress->id}}" method="POST" onsubmit="return verifySubmit();">
-                    @csrf
-                    @method('DELETE')
-                    <input class="like-link" type="submit" value="delete">
+            <td class="format-task-btn">
+                <a class="like-link" href="/tasks/{{$taskInProgress->id}}/edit"
+                    >edit</a
+                >
+                |
+                <form
+                    action="/tasks/{{$taskInProgress->id}}"
+                    method="POST"
+                    onsubmit="return verifySubmit();"
+                >
+                    @csrf @method('DELETE')
+                    <input class="like-link" type="submit" value="delete" />
                 </form>
             </td>
         </tr>
 
         @endforeach
     </table>
+
     @endif
 </div>
 <!-- END TO DO TASKS -->
@@ -157,7 +212,7 @@
     <h4>Completed Tasks</h4>
     @if(count($completedTasks) > 0)
     <table class="table">
-        <tr>            
+        <tr>
             <th scope="col">Change Status</th>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
@@ -166,41 +221,57 @@
         </tr>
 
         @foreach ($completedTasks as $completedTask)
-        <tr>            
-            <td>
-                <form action="/completed/{{$completedTask->id}}/edit" method="GET">
-                    <input type="submit" value="{{$completedTask->id}}" class="btn btn-success">
+        <tr>
+            <td class="format-task-btn">
+                <form
+                    action="/completed/{{$completedTask->id}}/edit"
+                    method="GET"
+                >
+                    <input
+                        type="submit"
+                        value="{{$completedTask->id}}"
+                        class="btn btn-success"
+                    />
                     <i class="fas fa-arrow-up"></i>
                 </form>
             </td>
             <td>
                 {{$completedTask->id}}
             </td>
-            <td>
+            <td class="format-name">
                 {{$completedTask->name}}
             </td>
             <td>
-                {{$completedTask->description}}
+                <div class="format-description"> 
+                    {!! $completedTask->description !!}
+                </div>
             </td>
-            <td>
+            <td class="format-time">
                 {{$completedTask->time}}
             </td>
             <td>
-                <a class="like-link" href="/tasks/{{$completedTask->id}}/edit">edit</a> |
-                <form action="/tasks/{{$completedTask->id}}" method="POST" onsubmit="return verifySubmit();">
-                    @csrf
-                    @method('DELETE')
-                    <input class="like-link" type="submit" value="delete">
+                <a class="like-link" href="/tasks/{{$completedTask->id}}/edit"
+                    >edit</a
+                >
+                |
+                <form
+                    action="/tasks/{{$completedTask->id}}"
+                    method="POST"
+                    onsubmit="return verifySubmit();"
+                >
+                    @csrf @method('DELETE')
+                    <input class="like-link" type="submit" value="delete" />
                 </form>
             </td>
         </tr>
         @endforeach
-
     </table>
+
     @endif
+</div>
 </div>
 <!-- END OF COMPLETED TASKS -->
 
-<script type="text/javascript" src="{{asset('/js/timer.js')}}"></script>
+<script type="text/javascript" src="{{ asset('/js/timer.js') }}"></script>
 
 @endsection

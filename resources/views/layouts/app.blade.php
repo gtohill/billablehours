@@ -225,5 +225,10 @@
   <!-- Custom scripts for all pages-->
   <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
+  <!-- CKeditor -->
+  <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script>  
+    CKEDITOR.replace( 'summary-ckeditor' );  
+  </script>
 </body>
 </html>

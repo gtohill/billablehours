@@ -25,8 +25,8 @@
             <td>
                 <input type="text" name="name"  value="{{$task->name}}" />
             </td>
-            <td>
-                <textarea name="description"   cols="30" rows="10">{{$task->description}}</textarea>
+            <td>                
+                <textarea class="form-cotrol" id="summary-ckeditor" name="description"> {!! $task->description !!}</textarea>                                
             </td>
             <td>
                 <input type="text" name="hour"   size="3" value="{{$task->hour}}" /> :
