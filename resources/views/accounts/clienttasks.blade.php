@@ -199,10 +199,8 @@
                 </form>
             </td>
         </tr>
-
         @endforeach
     </table>
-
     @endif
 </div>
 <!-- END TO DO TASKS -->
