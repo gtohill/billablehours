@@ -43,7 +43,7 @@ class ClientTasksController extends Controller
     {
         
         //get information from form 
-        $clientid = request('clientid');                 
+        $clientid = request('clientid'); // get client id
         $status = 1; //signifies task is in progress
 
         // create new task

@@ -6,15 +6,21 @@ body{
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-color: rgba(0, 0, 0, 1);
-  
-
   /* Set a specific height */
   height: 100%;
+  box-shadow: 5px 5px 10px #9cce7d,
+      -5px -5px 10px #a6caaf;
+  border-radius: 20px;
+  /* background-color: #EDE9FE; */
+  /* background-image: linear-gradient(to bottom right,  #D1D5DB, #C4B5FD); */
+
 }
+
 
 .h-img{
    opacity: .6;
    width:100%;
+   border-radius: 20px;
 
 }
 
@@ -27,4 +33,12 @@ body{
   transform: translate(-50%, -50%);
   font-weight: bolder;
   color: white;
+}
+
+.box_nueph{
+  box-shadow: 5px 5px 10px #9cce7d,
+      -5px -5px 10px #a6caaf;
+  border-radius: 10px;
+  margin:5px;
+  padding-top:10px;
 }

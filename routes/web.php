@@ -14,9 +14,9 @@
 Route::get('tasks/createtask/{id}', 'ClientTasksController@createtask');
 Route::get('/', 'IndexController@home' );
 Route::get('about', 'IndexController@about' );
-Route::resource('accounts', 'ClientController' );
-Route::resource('tasks', 'ClientTasksController' );
-Route::resource( 'opentask', 'OpenTaskController' );
+Route::resource('accounts', 'ClientController' ); // CRUD for client account
+Route::resource('tasks', 'ClientTasksController' ); // CRUD for tasks
+Route::resource( 'opentask', 'OpenTaskController' ); //   
 Route::resource( 'completed', 'CompletedTasksController' );
 Route::resource('autosave', 'AutoSaveController');
 

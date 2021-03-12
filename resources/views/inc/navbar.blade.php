@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md" style="background-color: #1B3409;">
+<nav class="navbar navbar-expand-md" style="background-image: linear-gradient(to right, #1B3409, #3d9109)">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
         <img src="{{url('/images/trackit-logo.png')}}" alt="Company Logo">

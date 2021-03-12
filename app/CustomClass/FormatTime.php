@@ -16,7 +16,10 @@ class FormatTime
         $this->minutes = floor($actual_time / 60) % 60;
         $this->hours = floor(($actual_time / (60 * 60)) % 24);                
     }
-
+    /**
+     * formats raw integer to a time readable format
+     * @return string
+     */
     public function get_formatted_time(){        
         $formatted = $this->hours .' : '.$this->minutes.' : '.$this->seconds;
         return (string)$formatted;
