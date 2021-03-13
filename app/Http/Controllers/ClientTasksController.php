@@ -41,7 +41,7 @@ class ClientTasksController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         //get information from form 
         $clientid = request('clientid'); // get client id
         $status = 1; //signifies task is in progress
@@ -62,7 +62,7 @@ class ClientTasksController extends Controller
         // add task to client
         $client->tasks()->save($task);
 
-        return view('accounts.createtask')->with(['client' => $client])->with(['message'=>'Success! Task was created']);
+        return view('accounts.createtask')->with(['client' => $client])->with(['message' => 'Success! Task was created']);
     }
 
     /**
@@ -88,21 +88,18 @@ class ClientTasksController extends Controller
     public function edit($id)
     {
         // get task and return view
-        if(auth()->user()){
+        if (auth()->user()) {
 
-            $task = Task::findorfail($id);             
+            $task = Task::findorfail($id);
 
             $edited_task = new EditTask($task);
- 
+
             // get client
             $client = Client::findorfail($task->client_id);
-            return view('task.edit')->with(['task'=>$edited_task])->with(['client'=>$client]);
-        
-        }        
-        else{
+            return view('task.edit')->with(['task' => $edited_task])->with(['client' => $client]);
+        } else {
             // user is not logged in - redirect to error page
             return redirect('errors.loginrequired');
-
         }
     }
 
@@ -114,7 +111,7 @@ class ClientTasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {    
+    {
         // get the client
         $client = Client::find($id);
 
@@ -136,12 +133,11 @@ class ClientTasksController extends Controller
 
         // delete open task from table
         $delete_open_task = $client->opentasks;
-        if(!isset($delete_open_task->id)){
+        if (!isset($delete_open_task->id)) {
             //abort(403, "unauthorized request");
             $var = new ClientTasks;
             $results = $var->get_tasks($id);
             return view('accounts.clienttasks')->with(['client' => $results[0]])->with(['openTask' => $results[1]])->with(['tasksInProgress' => $results[2]])->with(['completedTasks' => $results[3]]);
-            
         }
 
         $client->opentasks()->delete($delete_open_task->id);
@@ -161,26 +157,25 @@ class ClientTasksController extends Controller
     public function destroy($id)
     {
         // get task
-        $task = Task::findorfail($id);        
-        
+        $task = Task::findorfail($id);
+
         // get client
         $client = Client::findorfail($task->client_id);
-        
+
         // delete task
-        DB::table('tasks')->where('id',$id)->delete();        
+        DB::table('tasks')->where('id', $id)->delete();
 
         //return to tasks view
         $client_tasks = new ClientTasks;
         $results = $client_tasks->get_tasks($client->id);
         return view('accounts.clienttasks')->with(['client' => $results[0]])->with(['openTask' => $results[1]])->with(['tasksInProgress' => $results[2]])->with(['completedTasks' => $results[3]]);
-
     }
 
     /*
     custom controllers
     */
     public function createtask($id)
-    {       
+    {
 
         $client = Client::find($id);
 
@@ -190,36 +185,30 @@ class ClientTasksController extends Controller
     /*
     * edit task from edit form
     */
-    public function edittask(Request $request){
-       
-        try{        
-            // get client       
-            $task = Task::findorfail(request('id'));
-                        
-            $client = Client::findorfail($task->client_id);                
-                        
-            $task->name = request('name');
-            $task->description = request('description');
+    public function edittask(Request $request)
+    {
 
-            //convert time back to seconds
-            $second = (int)request('second');
-            $minute = (int)request('minute') * 60;
-            $hour = (int)request('hour') * 3600;
-            $total_seconds = $second + $minute + $hour;              
-            
-            // save edited task to database
-            $task->time = $total_seconds;
-            $task->setAmountAttribute();
-            $task->save();
-            
-            $etask = new EditTask($task);
-            return view('task.edit')->with(['task'=>$etask])->with(['client'=>$client])->with(['message'=>'Success: Task is updated']);
 
-        }
-        catch(Exception $e){
-            
-            echo "ERROR WILL ROGERS!";
-        }
- 
+        // get client       
+        $task = Task::findorfail(request('id'));
+
+        $client = Client::findorfail($task->client_id);
+
+        $task->name = request('name');
+        $task->description = request('description');
+
+        //convert time back to seconds
+        $second = (int)request('second');
+        $minute = (int)request('minute') * 60;
+        $hour = (int)request('hour') * 3600;
+        $total_seconds = $second + $minute + $hour;
+
+        // save edited task to database
+        $task->time = $total_seconds;
+        $task->setAmountAttribute();
+        $task->save();
+
+        $etask = new EditTask($task);
+        return view('task.edit')->with(['task' => $etask])->with(['client' => $client])->with(['message' => 'Success: Task is updated']);
     }
 }

@@ -1,12 +1,8 @@
-<div class="container-fluid mt-5" style="background-image: linear-gradient(to right, #1B3409, #3d9109)">
+<div id="footer" class="container-fluid mt-5" style="background-image: linear-gradient(to right, #1B3409, #3d9109)">
     <div class="row text-dark py-3">
         <div class="col-md-6 text-center">
-            <img
-                class="rounded mx-auto d-block"
-                src="{{ url('/images/trackit-logo.png') }}"
-                alt="Company Logo"
-            />
-            <p style="color:#FB9902">Time is money... track it!</p>
+            <img style="height:80px" src="{{url('/images/clock-billablehours-logo-160X380.png')}}" alt="Company Logo" >            
+            <p style="color:#ffffff">Time is money... Track It!</p>
         </div>
 
         <div class="col-md-6 text-center py-3">
